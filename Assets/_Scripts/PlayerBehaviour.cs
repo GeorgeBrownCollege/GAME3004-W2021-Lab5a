@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Controls")] 
+    public Joystick leftStick;
+
+
     // Movement Properties
     [Header("Movement")] 
     public float maxSpeed = 10.0f;
@@ -45,8 +49,6 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 hit.transform.gameObject.GetComponent<MeshRenderer>().material = selectable;
             }
-           
-
         }
 
 
@@ -58,8 +60,12 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         // movement
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        //float x = Input.GetAxis("Horizontal");
+        //float z = Input.GetAxis("Vertical");
+
+        float x = leftStick.Horizontal;
+        float z = leftStick.Vertical;
+        
 
         Vector3 move = transform.right * x + transform.forward * z;
 
